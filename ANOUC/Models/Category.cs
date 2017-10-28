@@ -34,7 +34,8 @@ namespace ANOUC.Models
 
     #endregion
 
-    public virtual ICollection<AnnoucementCategory> AnnoucementCategory { get; set; } = new HashSet<AnnoucementCategory>();
+    public virtual ICollection<AnnoucementCategory> AnnoucementCategory { get; set; }
+      = new HashSet<AnnoucementCategory>();
 
     public Category() {}
   }
