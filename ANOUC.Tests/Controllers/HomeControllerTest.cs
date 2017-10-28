@@ -12,14 +12,19 @@ namespace ANOUC.Tests.Controllers
   [TestClass]
   public class HomeControllerTest
   {
+    private HomeController _homeController;
+
+    [TestInitialize]
+    public void Startup()
+    {
+      _homeController = new HomeController();
+    }
+
     [TestMethod]
     public void Index()
     {
-      // Arrange
-      HomeController controller = new HomeController();
-
       // Act
-      ViewResult result = controller.Index() as ViewResult;
+      ViewResult result = _homeController.Index() as ViewResult;
 
       // Assert
       Assert.IsNotNull(result);
@@ -28,27 +33,23 @@ namespace ANOUC.Tests.Controllers
     [TestMethod]
     public void About()
     {
-      // Arrange
-      HomeController controller = new HomeController();
-
       // Act
-      ViewResult result = controller.About() as ViewResult;
+      ViewResult result = _homeController.About() as ViewResult;
 
       // Assert
+      Assert.IsNotNull(result);
       Assert.AreEqual("Your application description page.", result.ViewBag.Message);
     }
 
     [TestMethod]
     public void Contact()
     {
-      // Arrange
-      HomeController controller = new HomeController();
-
       // Act
-      ViewResult result = controller.Contact() as ViewResult;
+      ViewResult result = _homeController.Contact() as ViewResult;
 
       // Assert
       Assert.IsNotNull(result);
+      Assert.AreEqual("Your contact page.", result.ViewBag.Message);
     }
   }
 }
