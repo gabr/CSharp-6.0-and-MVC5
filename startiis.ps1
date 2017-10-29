@@ -4,5 +4,5 @@ $site_name = "ANOUC"
 
 start chrome "http:\\localhost:64835"
 
-& $iis /config:$config_path /site:$site_name #/trace:error
+& $iis /config:$config_path /site:$site_name /systray:false #/trace:error
 
