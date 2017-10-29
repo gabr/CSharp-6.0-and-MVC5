@@ -43,6 +43,10 @@
     <Compile Include="AnnoucementCategory.cs" />
     <Compile Include="ANOUCContext.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Migrations\201710291304159_Initial.cs" />
+    <Compile Include="Migrations\201710291304159_Initial.Designer.cs">
+      <DependentUpon>201710291304159_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Views\AccountViewModels.cs" />
@@ -83,6 +87,11 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710291304159_Initial.resx">
+      <DependentUpon>201710291304159_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
