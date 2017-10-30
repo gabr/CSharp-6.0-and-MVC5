@@ -54,3 +54,4 @@ WebGrease                           {1.6.0}                                  ANO
 PM> Enable-Migrations -ProjectName ANOUC.Data -Verbose
 PM> Add-Migration Initial -ProjectName ANOUC.Data -Verbose
 PM> Update-Database -ProjectName ANOUC.Data -Verbose
+PM> Add-Migration 1 -ProjectName ANOUC.Data -Verbose
