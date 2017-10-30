@@ -16,7 +16,10 @@ namespace ANOUC.Controllers
     // GET: Annoucement
     public ActionResult Index()
     {
-      var annoucement = _db.Annoucements.AsEnumerable();
+      var annoucement = _db.Annoucements
+        .AsNoTracking()
+        .AsEnumerable();
+
       return View(annoucement);
     }
 
