@@ -47,6 +47,10 @@
     <Compile Include="Migrations\201710291304159_Initial.Designer.cs">
       <DependentUpon>201710291304159_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710300746397_1.cs" />
+    <Compile Include="Migrations\201710300746397_1.Designer.cs">
+      <DependentUpon>201710300746397_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Views\AccountViewModels.cs" />
@@ -91,6 +95,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710291304159_Initial.resx">
       <DependentUpon>201710291304159_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710300746397_1.resx">
+      <DependentUpon>201710300746397_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

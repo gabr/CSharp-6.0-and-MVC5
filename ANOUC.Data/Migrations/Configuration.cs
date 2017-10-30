@@ -47,7 +47,14 @@ namespace ANOUC.Data.Migrations
 
         if (!context.Users.Any(u => u.UserName == "Admin"))
         {
-          var user = new User() { UserName = "Admin" };
+          var user = new User()
+          {
+            UserName = "Admin",
+            Name = "Tom",
+            Surname = "Programmer",
+            Age = 20
+          };
+
           var adminresult = manager.Create(user, "123456");
 
           if (adminresult.Succeeded)
