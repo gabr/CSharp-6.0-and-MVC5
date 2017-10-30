@@ -224,6 +224,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Annoucement\Index.cshtml" />
+    <Content Include="Views\Annoucement\Create.cshtml" />
+    <Content Include="Views\Annoucement\Details.cshtml" />
+    <Content Include="Views\Annoucement\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

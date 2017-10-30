@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using ANOUC.Data;
 
 namespace ANOUC.Controllers
@@ -59,26 +60,37 @@ namespace ANOUC.Controllers
     }
 
     // GET: Annoucement/Edit/5
-    public ActionResult Edit(int id)
+    public ActionResult Edit(int? id)
     {
-      return View();
+      if (id == null)
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+      Annoucement annoucement = _db.Annoucements.Find(id);
+      if (annoucement == null)
+      {
+        return HttpNotFound();
+      }
+
+      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      return View(annoucement);
     }
 
     // POST: Annoucement/Edit/5
     [HttpPost]
-      public ActionResult Edit(int id, FormCollection collection)
+    public ActionResult Edit(
+      [Bind(Include="Id,Content,Title,AddedDate,UserId")]
+      Annoucement editedAnnoucement)
+    {
+      if (ModelState.IsValid)
       {
-        try
-        {
-          // TODO: Add update logic here
-
-          return RedirectToAction("Index");
-        }
-        catch
-        {
-          return View();
-        }
+        _db.Entry(editedAnnoucement).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Index");
       }
+
+      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      return View(editedAnnoucement);
+    }
 
     // GET: Annoucement/Delete/5
     public ActionResult Delete(int id)
