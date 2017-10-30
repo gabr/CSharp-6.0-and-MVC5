@@ -11,16 +11,12 @@ namespace ANOUC.Controllers
 {
   public class AnnoucementController : Controller
   {
-    private ANOUCContext _db = new ANOUCContext();
+    private ANOUCDatamanager _db = new ANOUCDatamanager();
 
     // GET: Annoucement
     public ActionResult Index()
     {
-      var annoucement = _db.Annoucements
-        .AsNoTracking()
-        .AsEnumerable();
-
-      return View(annoucement);
+      return View(_db.GetAnnoucements());
     }
 
     // GET: Annoucement/Details/5
@@ -29,11 +25,9 @@ namespace ANOUC.Controllers
       if (id == null)
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-      Annoucement annoucement = _db.Annoucements.Find(id);
+      Annoucement annoucement = _db.GetAnnoucement(id.Value);
       if (annoucement == null)
-      {
         return HttpNotFound();
-      }
 
       return View(annoucement);
     }
@@ -41,7 +35,7 @@ namespace ANOUC.Controllers
     // GET: Annoucement/Create
     public ActionResult Create()
     {
-      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      ViewBag.UsersIds = new SelectList(_db.GetUsers(), "Id", "FullName");
       return View();
     }
 
@@ -53,12 +47,13 @@ namespace ANOUC.Controllers
     {
       if (ModelState.IsValid)
       {
-        _db.Annoucements.Add(newAnnoucement);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
+        if (_db.AddAnnoucement(newAnnoucement))
+          return RedirectToAction("Index");
+        else
+          throw new Exception("Error while saving Annoucement: " + newAnnoucement);
       }
 
-      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      ViewBag.UsersIds = new SelectList(_db.GetUsers(), "Id", "FullName");
       return View(newAnnoucement);
     }
 
@@ -68,13 +63,11 @@ namespace ANOUC.Controllers
       if (id == null)
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-      Annoucement annoucement = _db.Annoucements.Find(id);
+      Annoucement annoucement = _db.GetAnnoucement(id.Value);
       if (annoucement == null)
-      {
         return HttpNotFound();
-      }
 
-      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      ViewBag.UsersIds = new SelectList(_db.GetUsers(), "Id", "FullName");
       return View(annoucement);
     }
 
@@ -86,12 +79,13 @@ namespace ANOUC.Controllers
     {
       if (ModelState.IsValid)
       {
-        _db.Entry(editedAnnoucement).State = EntityState.Modified;
-        _db.SaveChanges();
-        return RedirectToAction("Index");
+        if (_db.SaveAnnoucementChanges(editedAnnoucement))
+          return RedirectToAction("Index");
+        else
+          throw new Exception("Error while saving changes in Annoucement: " + editedAnnoucement);
       }
 
-      ViewBag.UsersIds = new SelectList(_db.Users, "Id", "FullName");
+      ViewBag.UsersIds = new SelectList(_db.GetUsers(), "Id", "FullName");
       return View(editedAnnoucement);
     }
 
@@ -101,7 +95,7 @@ namespace ANOUC.Controllers
       if (id == null)
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-      Annoucement annoucement = _db.Annoucements.Find(id);
+      Annoucement annoucement = _db.GetAnnoucement(id.Value);
       if (annoucement == null)
         return HttpNotFound();
 
@@ -116,14 +110,14 @@ namespace ANOUC.Controllers
       if (id == null)
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-      Annoucement annoucement = _db.Annoucements.Find(id);
+      Annoucement annoucement = _db.GetAnnoucement(id.Value);
       if (annoucement == null)
         return HttpNotFound();
 
-      _db.Annoucements.Remove(annoucement);
-      _db.SaveChanges();
-
-      return RedirectToAction("Index");
+      if (_db.RemoveAnnoucement(annoucement))
+        return RedirectToAction("Index");
+      else
+        throw new Exception("Error while removing Annoucement: " + annoucement);
     }
 
     protected override void Dispose(bool disposing)
