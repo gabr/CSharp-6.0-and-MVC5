@@ -11,7 +11,14 @@ namespace ANOUC.Controllers
 {
   public class AnnoucementController : Controller
   {
-    private ANOUCDatamanager _db = new ANOUCDatamanager();
+    private IANOUCDataManager _db;
+
+    public AnnoucementController() { }
+
+    public AnnoucementController(IANOUCDataManager dataManager)
+    {
+      _db = dataManager;
+    }
 
     // GET: Annoucement
     public ActionResult Index()
