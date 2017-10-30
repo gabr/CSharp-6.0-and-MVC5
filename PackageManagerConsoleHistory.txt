@@ -56,3 +56,61 @@ PM> Add-Migration Initial -ProjectName ANOUC.Data -Verbose
 PM> Update-Database -ProjectName ANOUC.Data -Verbose
 PM> Add-Migration 1 -ProjectName ANOUC.Data -Verbose
 PM> Update-Database -ProjectName ANOUC.Data -Verbose
+PM> Install-Package Unity.Mvc -ProjectName ANOUC
+PM> Get-Package
+
+Id                                  Versions                                 ProjectName
+--                                  --------                                 -----------
+EntityFramework                     {6.1.0}                                  ANOUC.Data
+Microsoft.AspNet.Identity.Core      {2.2.1}                                  ANOUC.Data
+Microsoft.AspNet.Identity.Entity... {2.2.1}                                  ANOUC.Data
+Microsoft.AspNet.Mvc                {5.2.3}                                  ANOUC.Data
+Microsoft.AspNet.Razor              {3.2.3}                                  ANOUC.Data
+Microsoft.AspNet.WebPages           {3.2.3}                                  ANOUC.Data
+Microsoft.Web.Infrastructure        {1.0.0.0}                                ANOUC.Data
+EntityFramework                     {6.1.0}                                  ANOUC.Tests
+Microsoft.AspNet.Identity.Core      {2.2.1}                                  ANOUC.Tests
+Microsoft.AspNet.Identity.Entity... {2.2.1}                                  ANOUC.Tests
+Microsoft.AspNet.Mvc                {5.2.3}                                  ANOUC.Tests
+Microsoft.AspNet.Razor              {3.2.3}                                  ANOUC.Tests
+Microsoft.AspNet.WebPages           {3.2.3}                                  ANOUC.Tests
+Microsoft.Web.Infrastructure        {1.0.0.0}                                ANOUC.Tests
+MSTest.TestAdapter                  {1.2.0}                                  ANOUC.Tests
+MSTest.TestFramework                {1.2.0}                                  ANOUC.Tests
+Newtonsoft.Json                     {10.0.3}                                 ANOUC.Tests
+Antlr                               {3.5.0.2}                                ANOUC
+bootstrap                           {3.3.7}                                  ANOUC
+EntityFramework                     {6.2.0}                                  ANOUC
+jQuery                              {3.2.1}                                  ANOUC
+jQuery.Validation                   {1.16.0}                                 ANOUC
+Microsoft.ApplicationInsights       {2.4.0}                                  ANOUC
+Microsoft.ApplicationInsights.Ag... {2.4.0}                                  ANOUC
+Microsoft.ApplicationInsights.De... {2.4.1}                                  ANOUC
+Microsoft.ApplicationInsights.Pe... {2.4.1}                                  ANOUC
+Microsoft.ApplicationInsights.Web   {2.4.1}                                  ANOUC
+Microsoft.ApplicationInsights.Wi... {2.4.1}                                  ANOUC
+Microsoft.ApplicationInsights.Wi... {2.4.0}                                  ANOUC
+Microsoft.AspNet.Identity.Core      {2.2.1}                                  ANOUC
+Microsoft.AspNet.Identity.Entity... {2.2.1}                                  ANOUC
+Microsoft.AspNet.Mvc                {5.2.3}                                  ANOUC
+Microsoft.AspNet.Razor              {3.2.3}                                  ANOUC
+Microsoft.AspNet.TelemetryCorrel... {1.0.0}                                  ANOUC
+Microsoft.AspNet.Web.Optimization   {1.1.3}                                  ANOUC
+Microsoft.AspNet.WebPages           {3.2.3}                                  ANOUC
+Microsoft.CodeDom.Providers.DotN... {1.0.8}                                  ANOUC
+Microsoft.jQuery.Unobtrusive.Val... {3.2.3}                                  ANOUC
+Microsoft.Net.Compilers             {2.4.0}                                  ANOUC
+Microsoft.Owin                      {3.1.0}                                  ANOUC
+Microsoft.Owin.Security             {3.1.0}                                  ANOUC
+Microsoft.Web.Infrastructure        {1.0.0.0}                                ANOUC
+Modernizr                           {2.8.3}                                  ANOUC
+Newtonsoft.Json                     {10.0.3}                                 ANOUC
+Owin                                {1.0}                                    ANOUC
+Respond                             {1.4.2}                                  ANOUC
+System.Diagnostics.DiagnosticSource {4.4.1}                                  ANOUC
+Unity.Abstractions                  {2.1.0}                                  ANOUC
+Unity.Container                     {5.1.0}                                  ANOUC
+Unity.Mvc                           {5.0.2}                                  ANOUC
+WebActivatorEx                      {2.2.0}                                  ANOUC
+WebGrease                           {1.6.0}                                  ANOUC
+
