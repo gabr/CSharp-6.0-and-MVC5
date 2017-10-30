@@ -227,6 +227,7 @@
     <Content Include="Views\Annoucement\Create.cshtml" />
     <Content Include="Views\Annoucement\Details.cshtml" />
     <Content Include="Views\Annoucement\Edit.cshtml" />
+    <Content Include="Views\Annoucement\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

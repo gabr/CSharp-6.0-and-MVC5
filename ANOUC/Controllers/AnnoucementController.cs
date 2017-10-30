@@ -93,25 +93,41 @@ namespace ANOUC.Controllers
     }
 
     // GET: Annoucement/Delete/5
-    public ActionResult Delete(int id)
+    public ActionResult Delete(int? id)
     {
-      return View();
+      if (id == null)
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+      Annoucement annoucement = _db.Annoucements.Find(id);
+      if (annoucement == null)
+        return HttpNotFound();
+
+      return View(annoucement);
     }
 
     // POST: Annoucement/Delete/5
-    [HttpPost]
-      public ActionResult Delete(int id, FormCollection collection)
-      {
-        try
-        {
-          // TODO: Add delete logic here
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int? id)
+    {
+      if (id == null)
+        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-          return RedirectToAction("Index");
-        }
-        catch
-        {
-          return View();
-        }
-      }
+      Annoucement annoucement = _db.Annoucements.Find(id);
+      if (annoucement == null)
+        return HttpNotFound();
+
+      _db.Annoucements.Remove(annoucement);
+      _db.SaveChanges();
+
+      return RedirectToAction("Index");
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+      if (disposing)
+        _db.Dispose();
+      base.Dispose(disposing);
+    }
   }
 }
