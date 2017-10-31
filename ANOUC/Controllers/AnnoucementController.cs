@@ -97,7 +97,7 @@ namespace ANOUC.Controllers
     }
 
     // GET: Annoucement/Delete/5
-    public ActionResult Delete(int? id)
+    public ActionResult Delete(int? id, bool? error)
     {
       if (id == null)
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -105,6 +105,9 @@ namespace ANOUC.Controllers
       Annoucement annoucement = _db.GetAnnoucement(id.Value);
       if (annoucement == null)
         return HttpNotFound();
+
+      if (error.HasValue && error.Value == true)
+        ViewBag.Error = true;
 
       return View(annoucement);
     }
@@ -114,17 +117,24 @@ namespace ANOUC.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult DeleteConfirmed(int? id)
     {
-      if (id == null)
-        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+      try
+      {
+        if (id == null)
+          return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-      Annoucement annoucement = _db.GetAnnoucement(id.Value);
-      if (annoucement == null)
-        return HttpNotFound();
+        Annoucement annoucement = _db.GetAnnoucement(id.Value);
+        if (annoucement == null)
+          return HttpNotFound();
 
-      if (_db.RemoveAnnoucement(annoucement))
-        return RedirectToAction("Index");
-      else
-        throw new Exception("Error while removing Annoucement: " + annoucement);
+        if (_db.RemoveAnnoucement(annoucement))
+          return RedirectToAction("Index");
+        else
+          throw new Exception("Error while removing Annoucement: " + annoucement);
+      }
+      catch(Exception)
+      {
+        return RedirectToAction("Delete", new { id = id, error = true });
+      }
     }
 
     protected override void Dispose(bool disposing)

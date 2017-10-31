@@ -39,7 +39,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="*.cs" />
+    <Compile Include="Annoucement.cs" />
+    <Compile Include="AnnoucementCategory.cs" />
+    <Compile Include="ANOUCContext.cs" />
+    <Compile Include="ANOUCDataManager.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="IANOUCContext.cs" />
+    <Compile Include="IANOUCDataManager.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Migrations\201710291304159_Initial.cs" />
     <Compile Include="Migrations\201710291304159_Initial.Designer.cs">
       <DependentUpon>201710291304159_Initial.cs</DependentUpon>

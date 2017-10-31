@@ -48,6 +48,8 @@ namespace ANOUC.Data
 
     public bool RemoveAnnoucement(Annoucement annoucementToRemove)
     {
+      foreach (var atoc in _db.AnnoucementCategory.Where(ac => ac.Annoucement.Id == annoucementToRemove.Id))
+        _db.AnnoucementCategory.Remove(atoc);
       _db.Annoucements.Remove(annoucementToRemove);
       return _db.SaveChanges() > 0;
     }
