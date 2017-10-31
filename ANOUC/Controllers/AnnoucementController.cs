@@ -26,6 +26,12 @@ namespace ANOUC.Controllers
       return View(_db.GetAnnoucements());
     }
 
+    // GET: Annoucement
+    public ActionResult Partial()
+    {
+      return PartialView("Index", _db.GetAnnoucements());
+    }
+
     // GET: Annoucement/Details/5
     public ActionResult Details(int? id)
     {
