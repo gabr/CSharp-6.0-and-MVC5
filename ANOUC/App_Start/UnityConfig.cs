@@ -48,6 +48,7 @@ namespace ANOUC
             //container.RegisterType<AccountController>(new InjectionConstructor());
             //container.RegisterType<ManageController> (new InjectionConstructor());
 
+            container.RegisterType<IANOUCContext, ANOUCContext>(new PerRequestLifetimeManager());
             container.RegisterType<IANOUCDataManager, ANOUCDataManager>(new PerRequestLifetimeManager());
         }
     }

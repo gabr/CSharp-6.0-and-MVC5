@@ -8,9 +8,15 @@ namespace ANOUC.Data
 {
   public class ANOUCDataManager : IANOUCDataManager
   {
-    private ANOUCContext _db = new ANOUCContext();
+    private IANOUCContext _db;
 
-    public ANOUCDataManager() { }
+    public ANOUCDataManager(IANOUCContext dbContext)
+    {
+      if (dbContext == null)
+        throw new ArgumentNullException(nameof(dbContext));
+
+      _db = dbContext;
+    }
 
     public IEnumerable<Annoucement> GetAnnoucements(bool noTracking = true)
     {
