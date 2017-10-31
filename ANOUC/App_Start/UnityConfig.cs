@@ -1,6 +1,8 @@
 using System;
-
 using Unity;
+using Unity.Injection;
+using Unity.AspNet.Mvc;
+using ANOUC.Data;
 
 namespace ANOUC
 {
@@ -42,6 +44,11 @@ namespace ANOUC
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+            //container.RegisterType<ManageController> (new InjectionConstructor());
+
+            container.RegisterType<IANOUCDataManager, ANOUCDataManager>(new PerRequestLifetimeManager());
         }
     }
 }

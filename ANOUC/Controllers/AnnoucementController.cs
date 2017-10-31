@@ -130,7 +130,7 @@ namespace ANOUC.Controllers
     protected override void Dispose(bool disposing)
     {
       if (disposing)
-        _db.Dispose();
+        _db?.Dispose();
       base.Dispose(disposing);
     }
   }

@@ -6,11 +6,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ANOUC.Data
 {
-  public class ANOUCDatamanager
+  public class ANOUCDataManager : IANOUCDataManager
   {
     private ANOUCContext _db = new ANOUCContext();
 
-    public ANOUCDatamanager() { }
+    public ANOUCDataManager() { }
 
     public IEnumerable<Annoucement> GetAnnoucements(bool noTracking = true)
     {
