@@ -114,3 +114,5 @@ Unity.Mvc                           {5.0.2}                                  ANO
 WebActivatorEx                      {2.2.0}                                  ANOUC
 WebGrease                           {1.6.0}                                  ANOUC
 
+PM> Install-Package Microsoft.AspNet.Identity.Owin
+PM> Install-Package Microsoft.Owin.Host.SystemWeb
